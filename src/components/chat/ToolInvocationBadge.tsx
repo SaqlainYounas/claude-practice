@@ -46,16 +46,16 @@ export function ToolInvocationBadge({ toolInvocation }: ToolInvocationBadgeProps
   const isDone = toolInvocation.state === "result" && toolInvocation.result;
 
   return (
-    <div className="inline-flex items-center gap-2 mt-2 px-3 py-1.5 bg-neutral-50 rounded-lg text-xs font-mono border border-neutral-200">
+    <div className="inline-flex items-center gap-2 mt-2 px-3 py-1.5 bg-neutral-50 dark:bg-neutral-800 rounded-lg text-xs font-mono border border-neutral-200 dark:border-neutral-700">
       {isDone ? (
         <>
           <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-          <span className="text-neutral-700">{label}</span>
+          <span className="text-neutral-700 dark:text-neutral-300">{label}</span>
         </>
       ) : (
         <>
           <Loader2 className="w-3 h-3 animate-spin text-blue-600" />
-          <span className="text-neutral-700">{label}</span>
+          <span className="text-neutral-700 dark:text-neutral-300">{label}</span>
         </>
       )}
     </div>

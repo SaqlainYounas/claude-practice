@@ -62,6 +62,18 @@ JWT tokens in httpOnly cookies. Authentication is optional - anonymous users can
 - No emojis in comments. Keep comments natural and straightforward.
 - Use comments sparingly. Only comment complex code.
 
+## Commit Message Format
+
+- **Title**: Natural, concise — as short as possible.
+- **Description** structured as follows:
+
+1. **Description**
+   - *Jira Item link* (if applicable)
+   - *Problem Statement / Bug Statement / Feature Enhancement*
+   - *Solution*
+2. **Modified Files** — what was changed in each file and why.
+3. **Newly Added Files** — why each file was added.
+
 ## Testing
 
 Tests use Vitest with React Testing Library. Test files are colocated in `__tests__` directories next to their source files.
