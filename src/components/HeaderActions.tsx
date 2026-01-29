@@ -3,11 +3,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Plus, LogOut, FolderOpen, ChevronDown } from "lucide-react";
+import { Plus, LogOut, FolderOpen, ChevronDown, User } from "lucide-react";
 import { AuthDialog } from "@/components/auth/AuthDialog";
 import { signOut } from "@/actions";
 import { getProjects } from "@/actions/get-projects";
 import { createProject } from "@/actions/create-project";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import {
   Popover,
   PopoverContent,
@@ -95,13 +96,29 @@ export function HeaderActions({ user, projectId }: HeaderActionsProps) {
   if (!user) {
     return (
       <>
-        <div className="flex gap-2">
-          <Button variant="outline" className="h-8" onClick={handleSignInClick}>
-            Sign In
-          </Button>
-          <Button className="h-8" onClick={handleSignUpClick}>
-            Sign Up
-          </Button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Popover>
+            <PopoverTrigger asChild>
+              <button className="h-9 w-9 rounded-full flex items-center justify-center bg-neutral-200 dark:bg-neutral-700 hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors cursor-pointer">
+                <User className="h-4 w-4 text-neutral-600 dark:text-neutral-300" />
+              </button>
+            </PopoverTrigger>
+            <PopoverContent className="w-36 p-1" align="end">
+              <button
+                onClick={handleSignInClick}
+                className="w-full text-left px-3 py-2 text-sm rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={handleSignUpClick}
+                className="w-full text-left px-3 py-2 text-sm rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-700 transition-colors cursor-pointer"
+              >
+                Sign Up
+              </button>
+            </PopoverContent>
+          </Popover>
         </div>
         <AuthDialog
           open={authDialogOpen}
@@ -114,6 +131,7 @@ export function HeaderActions({ user, projectId }: HeaderActionsProps) {
 
   return (
     <div className="flex items-center gap-2">
+      <ThemeToggle />
       {!initialLoading && (
         <Popover open={projectsOpen} onOpenChange={setProjectsOpen}>
           <PopoverTrigger asChild>
